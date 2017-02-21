@@ -1,6 +1,8 @@
 
 
-Song id: <%= @song["id"]%>
-Name: <%= @song["name"]%>
-Artist: <%= @song["artist"]%>
-Rating: <%= @song["rating"]%>
+Song id: <%= @song.id%>
+Name: <%= @song.name%>
+Artist: <%= @song.artist%>
+Rating: <%= @song.rating%>
+
+<%= link_to "Delete Song", "/songs/#{@song.id}", method: :delete %>

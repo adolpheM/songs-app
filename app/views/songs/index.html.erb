@@ -1,6 +1,7 @@
 <table>
 
   <tr>
+    <td>Song ID</td>
     <td>Song Name</td>
     <td>Song Artist</td>
     <td>Song Rating</td>
@@ -9,10 +10,10 @@
   <% @songs.each do |song|%>
 
     <tr>
-      <td><%= song["id"]%></td>
-      <td><%= song["name"]%></td>
-      <td><%= song["artist"]%></td>
-      <td><%= song["rating"]%></td>
+      <td><%= song.id%></td>
+      <td><%= song.name%></td>
+      <td><%= song.artist%></td>
+      <td><%= song.rating%></td>
     </tr>
     
   <% end -%>  

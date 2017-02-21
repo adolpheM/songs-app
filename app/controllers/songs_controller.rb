@@ -2,24 +2,35 @@ class SongsController < ApplicationController
 
 
   def index 
-    @songs = Unirest.get("http://localhost:3000/api/v1/songs.json").body
+      @songs = Song.all 
+      
   end 
   
   def show
-    @song = Unirest.get("http://localhost:3000/api/v1/songs/#{params[:id]}.json").body 
+    @song = Song.find(params[:id])
   end 
 
   def new
   end 
 
   def create
-    @song = Unirest.post("http://localhost:3000/api/v1/songs.json", :headers => {"Accept"=> "application/json"}, :parameters => {
-    :name => params[:name],
-    :artist => params[:artist],
-    :rating => params[:rating]}   
-    ).body
+    @song = Song.create(params[:name],params[:artist],params[:rating]).body
 
     redirect_to "/songs/#{params['id']}"
   end 
 
+  def edit
+    @song = Unirest.get("#{ENV['DOMAIN']}/songs/#{params[:id]}.json").body 
+  end
+
+  def update
+    @song = Car.update(params[:name],params[:artist],params[:rating]).body
+    redirect_to "/songs/#{@song['id']}"
+  end
+
+  def destroy
+    
+    @song = Song.delete(params[:id])
+    redirect_to "/songs"
+  end
 end

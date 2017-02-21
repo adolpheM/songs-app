@@ -1,0 +1,15 @@
+<h1>Update Song</h1>
+
+<%= form_tag "/songs/#{@song['id']}", method: :patch do %>
+  <%= label_tag :name %>
+  <%= text_field_tag :name, @song['name'] %>
+
+  <%= label_tag :artist %>
+  <%= text_field_tag :artist, @song['artist']%>
+
+  <%= label_tag :rating %>
+  <%=text_field_tag :rating, @song['rating']%>
+
+  <%= submit_tag "Update Song" %>
+
+<% end -%>
